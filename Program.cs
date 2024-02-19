@@ -10,7 +10,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<AppDbContext>(option=> option.UseNpgsql(builder.Configuration.GetConnectionString("connection")));
+
+// Database connection with PostgreSQL
+AppDbContextFactory.ConfigureServices(
+    builder.Services, builder.Configuration.GetConnectionString("DefaultConnection")
+);
+
 
 var app = builder.Build();
 
