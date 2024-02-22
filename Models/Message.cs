@@ -10,9 +10,12 @@ public class Message : TimeMixin
     public int SenderId { get; set; }
     public int ReceiverId { get; set; }
     public string Text { get; set; }
+    public string? Group { get; set; }  // NRP: optional reference type property, requires constructor to suppress compiler warnings
 
-    public Message()
+    public Message(string text, string? group = null)
     {
+        Text = text;
+        Group = group;
     }
 }
 
